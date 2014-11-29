@@ -1,0 +1,18 @@
+<html>
+<head>welcome to HoistMe </head>
+<body>
+
+<h1> Sign Up for HoistMe </h1>
+
+
+<form method="POST" action="">
+{{ form.csrf_token }}
+{{ form.username.label }} {{form.username(size=30) }}
+{{form.password.label }} {{form.password(size=30) }}
+<input type="submit" value="SignUp">
+</form>
+
+</body>
+
+
+</html>
