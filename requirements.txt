@@ -1,0 +1,7 @@
+flask
+flask-restful
+flask-httpauth
+flask-mongoengine
+flask-wtf
+marshmallow
+
