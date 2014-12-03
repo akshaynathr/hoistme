@@ -1,5 +1,5 @@
 from server import app
-#import pymongo
+ 
 from server import db
 from flask import request
 class Person(db.Document):

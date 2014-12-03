@@ -24,6 +24,10 @@ class POST(Resource):
 			p.title=request.form['title']
 			p.author=request.form['author']
 			p.content=request.form['content']
+			t=[]
+			t.append(float(request.form['lon']))
+			t.append(float(request.form['lat']))
+			p.location=t
 			p.save()
 			return request.form['username'] +' saved'
 		return "Error in username or password"
@@ -31,8 +35,8 @@ class POST(Resource):
 
 class Feed(Resource):
 	def get(self):
-		ta=post_model.objects(author="aknath32")[0]
-		return ta.title + ' by '+ ta.author
+		ta=post_model.objects(author="aknath332")[0]
+		return ta.title + ' by '+ ta.author+  " - from location"+ str(ta.location)
 		
 				
 		

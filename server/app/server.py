@@ -2,7 +2,9 @@ import os
 
 from flask import Flask
 from flask.ext.mongoengine import MongoEngine
+from mongoengine import connect
 
+connect('hoistme')
 
 
 basedir=os.path.join(os.path.abspath(os.path.dirname(__file__)),'../')
@@ -13,7 +15,7 @@ app.config.from_object('app.config')
 #flask-mongoengine
 app.config["MONGODB_SETTINGS"]={'db':'hoistme'}
 
-db=MongoEngine(app)
+#db=MongoEngine(app)
 
 #flask-blueprints
 def blueprints():
