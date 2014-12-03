@@ -20,7 +20,7 @@ app.config["MONGODB_SETTINGS"]={'db':'hoistme'}
 #flask-blueprints
 def blueprints():
 	from post.views import posts_blueprint
-
+	from signup.views import signup_blueprint
 	app.register_blueprint(posts_blueprint)
-
+	app.register_blueprint(signup_blueprint)
 blueprints()

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>SignUp HoistMe</title></head>
+<body>
+	<h2>SignUP for HoistMe</h2>
+
+	< 
+
+		{% from "_formhelper.html" import render_field %}
+<form method=post action="/signup">
+  <dl>
+  	{{ render_field(form.hidden_tag)}}
+    {{ render_field(form.firstname) }}
+
+    {{ render_field(form.lastname) }}
+    {{ render_field(form.username) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field(form.accept_tos) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+</body>
+</html>

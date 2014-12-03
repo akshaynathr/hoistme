@@ -1,29 +1,25 @@
 from flask import Blueprint,request,jsonify
 import json
-from models import post_model
+from models import post_model,user_model
 from flask.ext.restful import Api,Resource
 posts_blueprint=Blueprint('posts_blueprint',__name__,template_folder='templates',static_folder='static')
 api=Api(posts_blueprint)
 
-def login(username,password):
-	if username != 'admin':
-        	return "Error in username or password"
-
-
+ 
 
 class POST(Resource):
 	def get(self):
 		t=[]
-		data=post_model.objects.all()
-		for i in data:
-			t.append(i.title)
-		return t	
+		#data=post_model.objects.all()
+		y=user_model.objects(firstname="Rahul")[0]
+		 
+		return "password= " +y.password
 	def put(self):
 		if request.form['username']=='admin':
 			p=post_model()
 			p.title=request.form['title']
 			p.author=request.form['author']
-			p.content=request.form['content']
+			#p.content=request.form['content']
 			t=[]
 			t.append(float(request.form['lon']))
 			t.append(float(request.form['lat']))
