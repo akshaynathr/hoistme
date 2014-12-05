@@ -5,7 +5,7 @@ class user_model(Document):
 		firstname=StringField(max_length=300,required=True)
 		lastname=StringField(max_length=300,required=True)
 		username=StringField(max_length=100,required=True)
-		email=EmailField()
+		email=StringField(required=True)
 		password=StringField(required=True)
 
 

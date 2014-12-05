@@ -1,0 +1,19 @@
+from server import app
+import pymongo
+
+class Person(Document):
+	name=StringField()
+
+
+@app.route('/test',method=['GET'])
+def test():
+	collection=Person._get_collection()
+	print(collection.find_one())
+
+
+@app.route('/test',method=['PUT'])
+def testout():
+	p=Person()
+	p.name=request.form['name']
+	return 'name_saved'	
+	

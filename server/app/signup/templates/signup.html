@@ -4,13 +4,22 @@
 <head><title>SignUp HoistMe</title></head>
 <body>
 	<h2>SignUP for HoistMe</h2>
-
-	< 
+ 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+	
 
 		{% from "_formhelper.html" import render_field %}
 <form method=post action="/signup">
   <dl>
-  	{{ render_field(form.hidden_tag)}}
+  <input type='hidden'>	{{ render_field(form.csrf_token)}}<input/>
     {{ render_field(form.firstname) }}
 
     {{ render_field(form.lastname) }}

@@ -4,7 +4,7 @@ from models import post_model,user_model
 from flask.ext.restful import Api,Resource
 posts_blueprint=Blueprint('posts_blueprint',__name__,template_folder='templates',static_folder='static')
 api=Api(posts_blueprint)
-
+from mongoengine.Document import *
  
 
 class POST(Resource):
@@ -15,8 +15,10 @@ class POST(Resource):
 		 
 		return "password= " +y.password
 	def put(self):
-		if request.form['username']=='admin':
-			p=post_model()
+		user=user_model.objects(Q(username=request.form['username']) & Q(password=request.form['password']))
+		if user is not None:
+		#if request.form['username']=='admin':
+			p=post_model() 
 			p.title=request.form['title']
 			p.author=request.form['author']
 			#p.content=request.form['content']
