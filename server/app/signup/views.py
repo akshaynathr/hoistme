@@ -14,8 +14,12 @@ def signup():
 	if  form.validate_on_submit() and check_duplicates(form.email.data):
 		
 		print("saved")
-		user=user_model(form.firstname.data,form.lastname.data,form.username.data,form.email.data,form.password.data)
-		user.save()
+
+		try:
+			user=user_model(form.firstname.data,form.lastname.data,form.username.data,form.email.data,form.password.data)
+			user.save()
+		except:
+			print("Error")
 	elif request.method=='POST':
 		flash("User Already exist")
 		return render_template('signup.html',form=form)
@@ -29,12 +33,14 @@ def error():
 
 
 def check_duplicates(emailid):
-	user=user_model.objects(email=emailid)[0]
-	print('duplicates checking'+ user.firstname)
-	if user is None:
+	 
+	try:
+		user=user_model.objects(email=emailid)[0]
+		print('duplicates checking'+ user.firstname)
+	except:
 		print('None')
 		return True
-	else:
-		print('already exist')
-		return False
+	
+	print('already exist')
+	return False
  

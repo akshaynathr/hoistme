@@ -9,20 +9,7 @@ class user_model(Document):
 	password=StringField(required=True)
 
 
-	def is_authenticated(self):
-		return True
-
-	def is_active(self):
-		return True
-
-	def is_anonymous(self):
-		return False
-
-	def get_id(self):
-		try:
-			return unicode(self.id)
-		except NameError:
-			return str(self.id)
+	 
 
 
 class post_model(Document):
