@@ -2,12 +2,27 @@ from mongoengine import *
 
 
 class user_model(Document):
-		firstname=StringField(max_length=300,required=True)
-		lastname=StringField(max_length=300,required=True)
-		username=StringField(max_length=100,required=True)
-		email=StringField(required=True)
-		password=StringField(required=True)
+	firstname=StringField(max_length=300,required=True)
+	lastname=StringField(max_length=300,required=True)
+	username=StringField(max_length=100,required=True)
+	email=StringField(required=True)
+	password=StringField(required=True)
 
+
+	def is_authenticated(self):
+		return True
+
+	def is_active(self):
+		return True
+
+	def is_anonymous(self):
+		return False
+
+	def get_id(self):
+		try:
+			return unicode(self.id)
+		except NameError:
+			return str(self.id)
 
 
 class post_model(Document):
